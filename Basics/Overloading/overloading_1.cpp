@@ -1,24 +1,31 @@
-// Overloading function with differnent arguments
-#include <iostream>
+// Overload ++ used as prefix
 
+#include <iostream>
 using namespace std;
 
-float absolute(float var){
-    if (var<0.0)
-    var = -var;
-    return var;
+class Count
+{
+private:
+    int value;
 
-}
+public:
+    Count() : value(5) {}
 
-int absolute(int var){
-    if(var<0)
-    var = -var;
+    void operator++()
+    {
+        ++value;
+    }
+    void display()
+    {
+        cout << "Count: " << value << endl;
+    }
+};
+int main()
+{
+    Count count1;
 
-}
+    ++count1;
 
-int main(){
-    cout<< "Absolute value of -5 = "<<absolute(-5)<<endl;
-
-    cout<<"Absolute value of 5.5 = "<< absolute(5.5f)<<endl;
+    count1.display();
     return 0;
 }

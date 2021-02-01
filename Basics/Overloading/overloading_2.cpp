@@ -1,36 +1,36 @@
-// Overloading using different number of arguments
+// Overload ++ when used as prefix and postfix
 
 #include <iostream>
 using namespace std;
 
-void display(int var1, double var2)
-{
-    cout << "Integer number: " << var1;
-    cout << " and double number: " << var2 << endl;
-}
+class Count {
+    private:
+    int value;
 
-void display(double var)
-{
-    cout << "Double number: " << var << endl;
-}
+    public:
 
-void display(int var)
-{
-    cout << "Integer number: " << var << endl;
-}
+    Count(): value(5){}
 
-int main()
-{
-    int a = 5;
-    double b = 5.5;
+    void operator ++ (){
+        ++value;
+    }
 
-    display(a);
+    void operator ++ (int){
+        ++value;
+    }
+    void display(){
+        cout<<"Count: "<<value<<endl;
+    }
 
-    display(b);
+};
+int main(){
+    Count count1;
 
-    display(a, b);
+    count1++;
+    count1.display();
 
+    ++count1;
+    
+    count1.display();
     return 0;
 }
-
-// Note:  In C++, many standard library functions are overloaded. For example, the sqrt() function can take double, float, int, etc. as parameters. This is possible because the sqrt() function is overloaded in C++.
