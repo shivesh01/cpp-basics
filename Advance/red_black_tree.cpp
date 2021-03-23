@@ -533,10 +533,14 @@ int main()
     bst.insert(60);
     bst.insert(75);
     bst.insert(57);
+    bst.insert(88);
+    bst.insert (99);
+    
 
     bst.printTree();
     cout << endl
          << "After deleting" << endl;
     bst.deleteNode(40);
+    bst.deleteNode(60);
     bst.printTree();
 }
