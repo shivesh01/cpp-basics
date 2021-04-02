@@ -37,20 +37,29 @@ void bubblesort(int array[], int size)
 
 void Printarray(int array[], int size)
 {
-    for (int i = 0; i < size - 1; ++i)
+    for (int i = 0; i <= size - 1; ++i)
     {
         cout << " " << array[i];
     }
     cout << "\n";
 }
 
+void no_of_comparisons(int size)
+{
+    int comp = size * (size - 1) / 2;
+    cout << comp;
+}
+
 // Driver Code
 int main()
 {
 
-    int data[] = {1, 2, 4, 5, 6};
+    int data[] = {1, 2, 4, 5, 6, -1};
     int size = sizeof(data) / sizeof(data[0]);
     bubblesort(data, size);
     cout << "Sorted array in the ascending order";
     Printarray(data, size);
+    cout << "\n"
+         << "no. of comparisons ";
+    no_of_comparisons(size);
 }
