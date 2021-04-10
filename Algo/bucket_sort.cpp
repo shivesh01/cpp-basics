@@ -22,18 +22,19 @@ using namespace std;
 
 struct Node
 {
-    int dat;
+    int data;
     struct Node *next;
 };
 
 void bucketsort(int arr[]);
 struct Node *insertionsort(struct Node *list);
-void print(int arr[];
+void print(int arr[]);
 void printBuckets(struct Node *list);
 int getBucketIndex(int value);
 
 // Sorting fuction
-void bucketsort(int arr[]){
+void bucketsort(int arr[])
+{
     int i, j;
     struct Node **buckets;
 
@@ -54,7 +55,7 @@ void bucketsort(int arr[]){
         current = (struct Node *)malloc(sizeof(struct Node));
         current->data = arr[i];
         current->next = buckets[pos];
-        bucket[pos] = current;
+        buckets[pos] = current;
     }
 
     // Print the buckets along with their elements
@@ -110,7 +111,8 @@ void bucketsort(int arr[]){
 }
 
 // Fuction to sort the elements of each bucket
-struct Node *insertionsort(struct Node *list){
+struct Node *insertionsort(struct Node *list)
+{
     struct Node *k, *nodeList;
     if (list == 0 || list->next == 0)
     {
@@ -154,14 +156,47 @@ struct Node *insertionsort(struct Node *list){
             continue;
         }
     }
-    
 
     return nodeList;
 }
-
-
-
-int main()
+int getBucketIndex(int value)
 {
-    
+    return value / INTERVAL;
+}
+
+// Print buckets
+void print(int ar[])
+{
+    int i;
+    for (i = 0; i < NARRAY; ++i)
+    {
+        cout << setw(3) << ar[i];
+    }
+    cout << endl;
+}
+
+void printBuckets(struct Node *list)
+{
+    struct Node *cur = list;
+    while (cur)
+    {
+        cout << setw(3) << cur->data;
+        cur = cur->next;
+    }
+}
+
+// Driver code
+int main(void)
+{
+    int array[NARRAY] = {
+        42, 32, 33, 52, 37, 47, 51};
+
+    cout << "Intial array: " << endl;
+    print(array);
+    cout << "-------------" << endl;
+
+    bucketsort(array);
+    cout << "--------------" << endl;
+    cout << "sorted array: " << endl;
+    print(array);
 }
