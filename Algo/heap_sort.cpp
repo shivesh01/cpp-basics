@@ -1,16 +1,16 @@
+// Heap sort in C++
 #include <iostream>
 using namespace std;
 
-// Heapify function
 void heapify(int arr[], int n, int i)
-{
-    // Find largest among root, left child and right child
+{ // Find largest among root, left child and right child
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
 
     if (left < n && arr[left] > arr[largest])
         largest = left;
+    // where n denotes last element
 
     if (right < n && arr[right] > arr[largest])
         largest = right;
@@ -50,7 +50,7 @@ void printArray(int arr[], int n)
 // Driver code
 int main()
 {
-    int arr[] = {1, 12, 7, 5, 4, 19};
+    int arr[] = {1, 12, 9, 5, 6, 10};
     int n = sizeof(arr) / sizeof(arr[0]);
     heapsort(arr, n);
 
